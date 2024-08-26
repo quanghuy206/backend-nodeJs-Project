@@ -1,11 +1,19 @@
 const express = require('express');
-const { getHomePage, backend } = require('../controllers/homeController');
+
+const { getHomePage, backend, postCreateUser, getCreatePage, getUpdatePage, postUpdateUser, postDeleteUser, deleteUserComfirmPage } = require('../controllers/homeController');
 const router = express.Router();
 
 //route.Methob('/Path',handle)
 router.get('/', getHomePage)
 //static file
+router.get('/create', getCreatePage)
+router.get('/update/:id', getUpdatePage)
 
-router.get('/backend', backend)
+
+router.post('/create-user', postCreateUser)
+router.post('/update-user', postUpdateUser)
+router.post('/delete-user/:id', postDeleteUser)
+
+router.post('/delete-user', deleteUserComfirmPage)
 
 module.exports = router;
